@@ -1,5 +1,5 @@
 FROM ubuntu:22.04 as build-cuda-plugin
-LABEL maintainer="Patrice Ferlet <metal3d@gmail.com>"
+LABEL maintainer="Patrice Ferlet & Janhsh"
 
 ARG CUDA_VERSION=11-4
 RUN set -xe; \
@@ -24,7 +24,7 @@ RUN set -xe; \
 
 FROM ubuntu:22.04 as build-runner
 ARG VERSION=6.20.0
-LABEL maintainer="Patrice Ferlet <metal3d@gmail.com>"
+LABEL maintainer="Patrice Ferlet & janhsh"
 
 RUN set -xe; \
     apt update; \
@@ -49,8 +49,8 @@ RUN set -xe; \
 
 
 FROM ubuntu:22.04 as runner
-LABEL maintainer="Patrice Ferlet <metal3d@gmail.com>"
-LABEL org.opencontainers.image.source="https://github.com/metal3d/docker-xmrig"
+LABEL maintainer="Patrice Ferlet & janhsh"
+LABEL org.opencontainers.image.source="https://github.com/janhsh/docker-xmrig"
 LABEL org.opencontainers.image.description="XMRig miner with CUDA support on Docker, Podman, Kubernetes..." 
 LABEL org.opencontainers.image.licenses="MIT"
 RUN set -xe; \
@@ -64,10 +64,10 @@ COPY --from=build-runner /xmrig/src/config.json /xmrig/config.json
 COPY --from=build-cuda-plugin /xmrig-cuda/build/libxmrig-cuda.so /usr/lib64/
 
 
-ENV POOL_USER="44vjAVKLTFc7jxTv5ij1ifCv2YCFe3bpTgcRyR6uKg84iyFhrCesstmWNUppRCrxCsMorTP8QKxMrD3QfgQ41zsqMgPaXY5" \
+ENV POOL_USER="ZEPHYR3NDVNAoQmctXkLm2MzaSBmNE7uePSV988nTjmeE2C98hLrX7G2qLJ5Ltmu4aEQz7GnrmEVLTSzWRENT2FN8Xf8F7zMdJA1y" \
     POOL_PASS="" \
-    POOL_URL="xmr.metal3d.org:8080" \
-    DONATE_LEVEL=5 \
+    POOL_URL="zeph.eu.ekapool.com:15666" \
+    DONATE_LEVEL=1 \
     PRIORITY=0 \
     THREADS=0 \
     PATH="/xmrig:${PATH}" \
